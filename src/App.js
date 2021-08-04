@@ -1,5 +1,5 @@
 import { HomePage } from "./pages/Home";
-import { Route, Switch } from "react-router";
+import { Route, Switch, Redirect } from "react-router-dom";
 import "./styles/homepage.scss";
 import "./App.css";
 import ShopPage from "./pages/Shop";
@@ -47,13 +47,16 @@ class App extends React.Component {
 				<Switch>
 					<Route exact path="/" component={HomePage} />
 					<Route exact path="/shop" component={ShopPage} />
-					<Route exact path="/signin" component={SignInSignUp} />
+					<Route exact path="/signin" render={() => (this.props.currentUser ? <Redirect to="/" /> : <SignInSignUp />)} />
 				</Switch>
 			</>
 		);
 	}
 }
 
+const mapStateToProps = ({ user }) => ({
+	currentUser: user.currentUser,
+});
 const mapDispatchToProps = (dispatch) => ({
 	setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 	/*https://stackoverflow.com/questions/64369792/redux-connect-mapdispatchtoprops-pass-in-the-result-of-an-action-creator/64372380#64372380*/
@@ -66,4 +69,4 @@ const mapDispatchToProps = (dispatch) => ({
  * Use these params as a way to decide what is passed to the connected component.
  * In this case App component does not need any state hence we pass null as the first param.
  */
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
