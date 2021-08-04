@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../assets/crown.svg";
 import { auth } from "../services/Firebase";
@@ -39,4 +40,11 @@ const Header = ({ currentUser }) => {
 	);
 };
 
-export default Header;
+/* connect() connects a given component in order to give it access to the store.
+ * mapStateToProps receives the entire application state object.From the store then we can attach a piece of state a components needs.
+ * In this case Header component needs information about the current user , auth object we get from firestore
+ */
+const mapStateToProps = (state) => ({
+	currentUser: state.user.currentUser,
+});
+export default connect(mapStateToProps)(Header);
