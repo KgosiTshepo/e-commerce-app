@@ -3,9 +3,11 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../assets/crown.svg";
 import { auth } from "../services/Firebase";
+import CartIcon from "./CartIcon";
 import "./header.scss";
+import ShoppingCartDropdown from "./ShoppingCartDropdown";
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, showCartDropDown }) => {
 	return (
 		<div className="header">
 			<Link className="logo-container" to="/">
@@ -34,8 +36,9 @@ const Header = ({ currentUser }) => {
 						SIGN IN
 					</Link>
 				)}
-				{/* </Link> */}
+				<CartIcon />
 			</div>
+			{showCartDropDown ? <ShoppingCartDropdown /> : null}
 		</div>
 	);
 };
@@ -44,7 +47,8 @@ const Header = ({ currentUser }) => {
  * mapStateToProps receives the entire application state object.From the store then we can attach a piece of state a components needs.
  * In this case Header component needs information about the current user , auth object we get from firestore
  */
-const mapStateToProps = (state) => ({
-	currentUser: state.user.currentUser,
+const mapStateToProps = ({ user: { currentUser }, cart: { showCartDropDown } }) => ({
+	currentUser,
+	showCartDropDown,
 });
 export default connect(mapStateToProps)(Header);
