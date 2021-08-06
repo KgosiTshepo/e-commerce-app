@@ -16,7 +16,7 @@ const CollectionItem = ({ item, addToCart }) => {
 			/>
 			<div className="collection-footer">
 				<span className="item-name">{name}</span>
-				<span className="item-price">{price}</span>
+				<span className="item-price">{price.toFixed(2)}</span>
 			</div>
 			<CustomButton text="Add to Cart" inverted onClick={() => addToCart(item)} />
 		</div>

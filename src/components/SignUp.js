@@ -1,7 +1,7 @@
 import React from "react";
-import FormInput from "./FormInput";
-import CustomButton from "./CustomButton";
 import { auth, createUserProfile } from "../services/Firebase";
+import CustomButton from "./CustomButton";
+import FormInput from "./FormInput";
 import "./sign-up.scss";
 class SignUp extends React.Component {
 	state = {
@@ -26,7 +26,9 @@ class SignUp extends React.Component {
 			await createUserProfile(user, { displayName });
 			console.log(displayName);
 			// clear form controls
-			this.setState({ displayName: "", email: "", password: "", confirmPassword: "" }, () => console.log("clearing form controls!"));
+			this.setState({ displayName: "", email: "", password: "", confirmPassword: "" }, () =>
+				console.log("clearing form controls!")
+			);
 		} catch (error) {
 			console.log(error);
 		}
@@ -44,11 +46,39 @@ class SignUp extends React.Component {
 				<h2 className="title">Create an account </h2>
 				<span>Sign up with your email and password</span>
 				<form onSubmit={this.onSignUpSubmit}>
-					<FormInput name="displayName" type="text" label="username" value={displayName} onChangeHandler={this.onChangeHandler} required />
-					<FormInput name="email" type="email" label="email" value={email} onChangeHandler={this.onChangeHandler} required />
+					<FormInput
+						name="displayName"
+						type="text"
+						label="username"
+						value={displayName}
+						onChangeHandler={this.onChangeHandler}
+						required
+					/>
+					<FormInput
+						name="email"
+						type="email"
+						label="email"
+						value={email}
+						onChangeHandler={this.onChangeHandler}
+						required
+					/>
 
-					<FormInput name="password" type="password" label="password" value={password} onChangeHandler={this.onChangeHandler} required />
-					<FormInput name="confirmPassword" type="password" label="confirm password" value={confirmPassword} onChangeHandler={this.onChangeHandler} required />
+					<FormInput
+						name="password"
+						type="password"
+						label="password"
+						value={password}
+						onChangeHandler={this.onChangeHandler}
+						required
+					/>
+					<FormInput
+						name="confirmPassword"
+						type="password"
+						label="confirm password"
+						value={confirmPassword}
+						onChangeHandler={this.onChangeHandler}
+						required
+					/>
 					<div className="buttons">
 						<CustomButton type="submit" text="Sign up" />
 					</div>
