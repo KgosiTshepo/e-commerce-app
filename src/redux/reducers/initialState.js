@@ -4,5 +4,6 @@ export const initialState = {
 	},
 	cart: {
 		showCartDropDown: false,
+		items: [],
 	},
 };

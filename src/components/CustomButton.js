@@ -1,9 +1,14 @@
 import React from "react";
 import "./custom-button.scss";
 
-const CustomButton = ({ text, isGoogleSignIn, ...otherButtonProps }) => {
+const CustomButton = ({ text, isGoogleSignIn, inverted, ...otherButtonProps }) => {
 	return (
-		<button className={`${isGoogleSignIn ? "google-sign-in" : ""} custom-button`} {...otherButtonProps}>
+		<button
+			className={`${inverted ? "inverted" : ""} ${
+				isGoogleSignIn ? "google-sign-in" : ""
+			} custom-button`}
+			{...otherButtonProps}
+		>
 			{text.toUpperCase()}
 		</button>
 	);
