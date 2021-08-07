@@ -1,14 +1,16 @@
-import { HomePage } from "./pages/Home";
-import { Route, Switch, Redirect } from "react-router-dom";
-import "./styles/homepage.scss";
-import "./App.css";
-import ShopPage from "./pages/Shop";
-import Header from "./components/Header";
-import SignInSignUp from "./pages/SignInSignUp";
 import React from "react";
-import { auth, createUserProfile } from "./services/Firebase";
 import { connect } from "react-redux";
+import { Redirect, Route, Switch } from "react-router-dom";
+import { createStructuredSelector } from "reselect";
+import "./App.css";
+import Header from "./components/Header";
+import { HomePage } from "./pages/Home";
+import ShopPage from "./pages/Shop";
+import SignInSignUp from "./pages/SignInSignUp";
 import { setCurrentUser } from "./redux/actions/userAction";
+import { selectCurrentUser } from "./redux/selectors/userSelector";
+import { auth, createUserProfile } from "./services/Firebase";
+import "./styles/homepage.scss";
 
 class App extends React.Component {
 	unsubscribe = null;
@@ -47,15 +49,21 @@ class App extends React.Component {
 				<Switch>
 					<Route exact path="/" component={HomePage} />
 					<Route exact path="/shop" component={ShopPage} />
-					<Route exact path="/signin" render={() => (this.props.currentUser ? <Redirect to="/" /> : <SignInSignUp />)} />
+					<Route
+						exact
+						path="/signin"
+						render={() =>
+							this.props.currentUser ? <Redirect to="/" /> : <SignInSignUp />
+						}
+					/>
 				</Switch>
 			</>
 		);
 	}
 }
 
-const mapStateToProps = ({ user }) => ({
-	currentUser: user.currentUser,
+const mapStateToProps = createStructuredSelector({
+	currentUser: selectCurrentUser,
 });
 const mapDispatchToProps = (dispatch) => ({
 	setCurrentUser: (user) => dispatch(setCurrentUser(user)),
