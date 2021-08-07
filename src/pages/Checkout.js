@@ -32,7 +32,9 @@ const CheckoutPage = ({ items, priceToPay }) => {
 				<CheckoutItem key={item.id} cartItem={item} />
 			))}
 			<div className="price-to-pay">
-				<span>To Pay: {priceToPay}</span>
+				<span>
+					<strong>To Pay</strong> R{priceToPay.toFixed(2)}
+				</span>
 			</div>
 		</div>
 	);

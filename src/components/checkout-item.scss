@@ -21,8 +21,15 @@
 		text-align: center;
 	}
 
-	.remove-item-button {
-		margin-left: 12px;
+	.quantity {
+		display: flex;
+
+		.value {
+			margin: 0 10px;
+		}
+	}
+	.remove-item-button,
+	.arrow {
 		padding: 0;
 		cursor: pointer;
 		background: none;

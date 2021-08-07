@@ -1,4 +1,4 @@
-import addItemToCart from "../../utils/cardUtil";
+import { addItemToCart, removeItemFromCart } from "../../utils/cardUtil";
 import { CartActionTypes } from "../actions/cartActionTypes";
 import { initialState } from "./initialState";
 // const INITIAL_STATE = {
@@ -13,10 +13,20 @@ const cartReducer = (state = initialState.cart, action) => {
 				...state,
 				showCartDropDown: !state.showCartDropDown,
 			};
-		case CartActionTypes.ADD_ITEMS:
+		case CartActionTypes.ADD_ITEM:
 			return {
 				...state,
 				items: addItemToCart(state.items, action.payload),
+			};
+		case CartActionTypes.REMOVE_ITEM:
+			return {
+				...state,
+				items: removeItemFromCart(state.items, action.payload),
+			};
+		case CartActionTypes.REMOVE_ITEM_FROM_CART:
+			return {
+				...state,
+				items: state.items.filter((item) => item.id !== action.payload),
 			};
 		default:
 			return state;
