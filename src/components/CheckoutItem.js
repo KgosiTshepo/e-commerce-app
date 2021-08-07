@@ -14,11 +14,19 @@ const CheckoutItem = ({ cartItem, removeItem, addItemToCart, itemToRemoveFromCar
 			<span className="name">{name}</span>
 
 			<span className="quantity">
-				<button className="arrow" onClick={() => itemToRemoveFromCart(cartItem)}>
+				<button
+					className="arrow"
+					aria-label="Decrease product amount"
+					onClick={() => itemToRemoveFromCart(cartItem)}
+				>
 					&#10094;
 				</button>
 				<span className="value">{quantity}</span>
-				<button className="arrow" onClick={() => addItemToCart(cartItem)}>
+				<button
+					className="arrow"
+					aria-label="Increase product amount"
+					onClick={() => addItemToCart(cartItem)}
+				>
 					&#10095;
 				</button>
 			</span>
