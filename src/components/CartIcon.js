@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { ReactComponent as ShoppingCartIcon } from "../assets/shopping-bag.svg";
 import { toggleCartDropdown } from "../redux/actions/cartAction";
-import { selectCartItemsCount } from "../redux/selectors/cartSelectors";
+import { selectCartItemsCount } from "../redux/selectors/cartSelector";
 import "./shopping-cart.scss";
 
 const CartIcon = ({ toggleCartDropdown, itemsInCartCount }) => {

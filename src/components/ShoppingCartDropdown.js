@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { selectCartItem } from "../redux/selectors/cartSelectors";
+import { selectCartItem } from "../redux/selectors/cartSelector";
 import CartItem from "./CartItem";
 import CustomButton from "./CustomButton";
 import "./shopping-cart-dropdown.scss";
