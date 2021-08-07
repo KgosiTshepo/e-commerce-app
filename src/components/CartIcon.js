@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { ReactComponent as ShoppingCartIcon } from "../assets/shopping-bag.svg";
 import { toggleCartDropdown } from "../redux/actions/cartAction";
+import { selectCartItemsCount } from "../redux/actions/cartSelectors";
 import "./shopping-cart.scss";
 
 const CartIcon = ({ toggleCartDropdown, itemsInCartCount }) => (
@@ -10,13 +11,16 @@ const CartIcon = ({ toggleCartDropdown, itemsInCartCount }) => (
 		<span className="item-count">{itemsInCartCount}</span>
 	</div>
 );
-const mapStateToProps = ({ cart: { items } }) => ({
-	/* reduce((accumulator,currentValue) => () => , initialValue*/
-	itemsInCartCount: items.reduce(
-		(accumulatedQuantity, cartItem) => accumulatedQuantity + cartItem.quantity,
-		0
-	),
+const mapStateToProps = (state) => ({
+	itemsInCartCount: selectCartItemsCount(state),
 });
+// const mapStateToProps = ({ cart: { items } }) => ({
+// 	/* reduce((accumulator,currentValue) => () => , initialValue*/
+// 	itemsInCartCount: items.reduce(
+// 		(accumulatedQuantity, cartItem) => accumulatedQuantity + cartItem.quantity,
+// 		0
+// 	),
+// });
 const mapDispatchToProps = (dispatch) => ({
 	toggleCartDropdown: () => dispatch(toggleCartDropdown()),
 });
