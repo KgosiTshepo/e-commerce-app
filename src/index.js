@@ -1,21 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import "./index.css";
+import { BrowserRouter } from "react-router-dom";
+import { PersistGate } from "redux-persist/integration/react";
 import App from "./App";
+import "./index.css";
+import { persistor, store } from "./redux/store/store";
 import reportWebVitals from "./reportWebVitals";
-import store from "./redux/store/store";
 
 ReactDOM.render(
 	/* The Provider makes Redux store available to all components rendered inside <Provider>
 	 *  The idea is that the store needs to be placed where child components can have access to it.
 	 *  This then makes it available to the entire component tree through the connect() calls
 	 */
+
 	<Provider store={store}>
 		<BrowserRouter>
 			<React.StrictMode>
-				<App />
+				{/*PersistGate delays the rendering until the persisted state is retrieved and saved to Redux
+				 * Takes a loading prop which can be null or any react instance to show during data retrieval */}
+				<PersistGate loading={null} persistor={persistor}>
+					<App />
+				</PersistGate>
 			</React.StrictMode>
 		</BrowserRouter>
 	</Provider>,
