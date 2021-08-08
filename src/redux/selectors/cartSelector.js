@@ -8,3 +8,11 @@ export const selectShowCartDropDown = createSelector([selectCart], (cart) => car
 export const selectCartItemsCount = createSelector([selectCartItem], (items) =>
 	items.reduce((accumulatedQuantity, cartItem) => accumulatedQuantity + cartItem.quantity, 0)
 );
+
+export const selectCartTotal = createSelector([selectCartItem], (items) =>
+	items.reduce(
+		(accumulatedCartTotal, cartItem) =>
+			accumulatedCartTotal + cartItem.quantity * cartItem.price,
+		0
+	)
+);

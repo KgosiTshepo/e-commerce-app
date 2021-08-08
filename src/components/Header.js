@@ -21,8 +21,8 @@ const Header = ({ currentUser, showCartDropDown }) => {
 				<Link className="option" to="/shop">
 					SHOP
 				</Link>
-				<Link className="option" to="/contact">
-					CONTACT
+				<Link className="option" to="/orders">
+					ORDERS
 				</Link>
 				{/* <Link className="option" to="/signup"> */}
 				{currentUser ? (

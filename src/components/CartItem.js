@@ -3,6 +3,7 @@ import "./cart-item.scss";
 
 const CartItem = ({ item: { imageUrl, price, name, quantity } }) => {
 	let pricePerQuantity = price * quantity;
+
 	return (
 		<div className="cart-item">
 			<img src={imageUrl} alt={name} />
