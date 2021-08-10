@@ -1,10 +1,10 @@
 import React from "react";
-import MenuItemList from "../components/MenuList";
+import ProductDirectory from "../components/productDirectory";
 
 export const HomePage = () => {
 	return (
 		<div className="homepage">
-			<MenuItemList />
+			<ProductDirectory />
 		</div>
 	);
 };
