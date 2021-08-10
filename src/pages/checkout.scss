@@ -15,7 +15,10 @@
 		grid-template-columns: repeat(5, 1fr);
 		border-bottom: 1px solid darkgrey;
 	}
-
+	.StripeCheckout {
+		margin-left: auto;
+		margin-top: 50px;
+	}
 	.price-to-pay {
 		margin-top: 30px;
 		margin-left: auto;
