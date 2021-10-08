@@ -18,11 +18,14 @@ const Header = ({ currentUser, showCartDropDown }) => {
 				<Logo />
 			</Link>
 			<div className="options-container">
-				<Link className="option" to="/shop">
-					SHOP
+				<Link className="option" to="/collections">
+					PRODUCTS
 				</Link>
 				<Link className="option" to="/orders">
 					ORDERS
+				</Link>
+				<Link className="option" to="/rewards">
+					REWARDS
 				</Link>
 				{/* <Link className="option" to="/signup"> */}
 				{currentUser ? (

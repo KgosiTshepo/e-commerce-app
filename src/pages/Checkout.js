@@ -34,7 +34,7 @@ const CheckoutPage = ({ items, priceToPay }) => {
 			))}
 			<div className="price-to-pay">
 				<span>
-					<strong>To Pay</strong> R{priceToPay.toFixed(2)}
+					<strong>Subtotal</strong> R{priceToPay.toFixed(2)}
 				</span>
 			</div>
 			<StripeCheckOutButton price={priceToPay} />
